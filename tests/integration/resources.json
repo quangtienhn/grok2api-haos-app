@@ -1,0 +1,98 @@
+{
+  "binary": "grok2api-windows-amd64.exe (build artifact, not committed; path sanitized)","oldString">
+"binary": "D:\\Workspace\\CLI2API\\grok2api-haos-app\\.build\\grok2api-windows-amd64.exe",
+  "binary_bytes": 89555968,
+  "runs": [
+    {
+      "startup_seconds": 0.55,
+      "samples": [
+        {
+          "working_set_mb": 70.7,
+          "peak_working_set_mb": 70.7,
+          "private_mb": 94.7,
+          "cpu_seconds": 0.27,
+          "at_seconds": 5
+        },
+        {
+          "working_set_mb": 71.1,
+          "peak_working_set_mb": 71.1,
+          "private_mb": 95.1,
+          "cpu_seconds": 0.27,
+          "at_seconds": 30
+        },
+        {
+          "working_set_mb": 71.4,
+          "peak_working_set_mb": 71.4,
+          "private_mb": 95.4,
+          "cpu_seconds": 0.33,
+          "at_seconds": 60
+        }
+      ]
+    },
+    {
+      "startup_seconds": 0.52,
+      "samples": [
+        {
+          "working_set_mb": 70.7,
+          "peak_working_set_mb": 70.7,
+          "private_mb": 93.4,
+          "cpu_seconds": 0.42,
+          "at_seconds": 5
+        },
+        {
+          "working_set_mb": 71.0,
+          "peak_working_set_mb": 71.0,
+          "private_mb": 93.7,
+          "cpu_seconds": 0.42,
+          "at_seconds": 30
+        },
+        {
+          "working_set_mb": 71.3,
+          "peak_working_set_mb": 71.3,
+          "private_mb": 94.0,
+          "cpu_seconds": 0.42,
+          "at_seconds": 60
+        }
+      ]
+    },
+    {
+      "startup_seconds": 0.53,
+      "samples": [
+        {
+          "working_set_mb": 70.8,
+          "peak_working_set_mb": 70.8,
+          "private_mb": 94.7,
+          "cpu_seconds": 0.27,
+          "at_seconds": 5
+        },
+        {
+          "working_set_mb": 71.1,
+          "peak_working_set_mb": 71.1,
+          "private_mb": 95.0,
+          "cpu_seconds": 0.27,
+          "at_seconds": 30
+        },
+        {
+          "working_set_mb": 71.5,
+          "peak_working_set_mb": 71.5,
+          "private_mb": 95.6,
+          "cpu_seconds": 0.28,
+          "at_seconds": 60
+        }
+      ]
+    }
+  ],
+  "startup_seconds": {
+    "runs": [
+      0.55,
+      0.52,
+      0.53
+    ],
+    "median": 0.53
+  },
+  "idle_60s": {
+    "working_set_mb": 71.4,
+    "private_mb": 95.0,
+    "cpu_seconds": 0.34
+  }
+}

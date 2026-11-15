@@ -1,0 +1,224 @@
+[
+  {
+    "id": "IT24",
+    "name": "Manifest: no `map`, no ingress, webui+watchdog configured",
+    "status": "PASS",
+    "detail": "keys validated, webui/watchdog point at port 8000"
+  },
+  {
+    "id": "IT25",
+    "name": "Options/schema: mandatory password, no fake options",
+    "status": "PASS",
+    "detail": "6 schema entries, no log_level/api_key"
+  },
+  {
+    "id": "IT26",
+    "name": "build.yaml, manifest and Dockerfile are consistent",
+    "status": "PASS",
+    "detail": "arch=['aarch64', 'amd64'], base images pinned to v3.1.8"
+  },
+  {
+    "id": "IT27",
+    "name": "Shell scripts: LF line endings and valid bash syntax",
+    "status": "PASS",
+    "detail": "3 scripts, bash -n clean"
+  },
+  {
+    "id": "IT28",
+    "name": "No Python mock server left in the package",
+    "status": "PASS",
+    "detail": "no mock_server.py / test_suite.py in the repository tree"
+  },
+  {
+    "id": "IT30",
+    "name": "GitHub packaging: root LICENSE, repository URL, signal-safe cleanup",
+    "status": "PASS",
+    "detail": "root LICENSE byte-identical to add-on LICENSE (2251 B), repository url ends with grok2api-haos-app, trap cleanup EXIT INT TERM present"
+  },
+  {
+    "id": "IT01",
+    "name": "/healthz liveness (real binary)",
+    "status": "PASS",
+    "detail": "HTTP 200 {'ok': true}"
+  },
+  {
+    "id": "IT02",
+    "name": "/readyz is not 200 on a fresh install (watchdog must use /healthz)",
+    "status": "PASS",
+    "detail": "/healthz HTTP 200, /readyz HTTP 503 state=not_ready"
+  },
+  {
+    "id": "IT03",
+    "name": "Admin login rejects a wrong password",
+    "status": "PASS",
+    "detail": "HTTP 401 code=invalidCredentials"
+  },
+  {
+    "id": "IT04",
+    "name": "Admin login with the bootstrap password",
+    "status": "PASS",
+    "detail": "HTTP 200, access token issued for the configured admin"
+  },
+  {
+    "id": "IT05",
+    "name": "Admin API rejects unauthenticated /me",
+    "status": "PASS",
+    "detail": "with token HTTP 200, without token HTTP 401 adminUnauthorized"
+  },
+  {
+    "id": "IT06",
+    "name": "Bootstrap client API key via POST /client-keys",
+    "status": "PASS",
+    "detail": "HTTP 201, key id=1, secret format g2a_<prefix>_<secret>"
+  },
+  {
+    "id": "IT07",
+    "name": "Duplicate key names are accepted by the upstream API",
+    "status": "PASS",
+    "detail": "HTTP 201 code=-; upstream allows duplicate names (HTTP 201), which is why the add-on bootstrap looks keys up by name instead of creating blindly"
+  },
+  {
+    "id": "IT08",
+    "name": "Key secret can be revealed again (Web UI path)",
+    "status": "PASS",
+    "detail": "HTTP 200, same secret, Cache-Control: no-store"
+  },
+  {
+    "id": "IT09",
+    "name": "OpenAI /v1/models: valid 200, missing/bogus 401",
+    "status": "PASS",
+    "detail": "valid HTTP 200 (0 entries), missing HTTP 401 invalid_api_key, bogus HTTP 401"
+  },
+  {
+    "id": "IT10",
+    "name": "X-API-Key header is accepted as an alternative to Bearer",
+    "status": "PASS",
+    "detail": "HTTP 200 with only X-API-Key set"
+  },
+  {
+    "id": "IT11",
+    "name": "Chat with zero accounts returns a clean 4xx (no models configured)",
+    "status": "PASS",
+    "detail": "HTTP 404 code=model_not_found (no account and no model route exist yet; the process stays healthy)"
+  },
+  {
+    "id": "IT12",
+    "name": "Unknown model is rejected with a clean 4xx",
+    "status": "PASS",
+    "detail": "HTTP 404 code=model_not_found"
+  },
+  {
+    "id": "IT13",
+    "name": "Admin endpoints reject unauthenticated requests",
+    "status": "PASS",
+    "detail": "HTTP 401 for client-keys=401, accounts=401, settings=401, dashboard=401, request-audits=401"
+  },
+  {
+    "id": "IT14",
+    "name": "Real SPA build is served with absolute asset paths",
+    "status": "PASS",
+    "detail": "/ HTTP 200, /runtime-config.js HTTP 200, /assets/accounts-api-y_OcLeYr.js byte-identical, traversal HTTP 400"
+  },
+  {
+    "id": "IT15",
+    "name": "Imported credential is encrypted at rest (no plaintext in DB)",
+    "status": "PASS",
+    "detail": "account listed, marker absent from backend.db (4096 bytes)"
+  },
+  {
+    "id": "IT16",
+    "name": "No secrets in the container log stream",
+    "status": "PASS",
+    "detail": "5 secret values scanned across 7112 bytes of stdout/stderr"
+  },
+  {
+    "id": "IT17",
+    "name": "Admin password change via PUT /me/password",
+    "status": "PASS",
+    "detail": "HTTP 200, old password 401, new password 200"
+  },
+  {
+    "id": "IT18",
+    "name": "Graceful shutdown on a termination signal",
+    "status": "PASS",
+    "detail": "CTRL_BREAK_EVENT: exit code 0"
+  },
+  {
+    "id": "IT19",
+    "name": "Restart keeps the SQLite database and the rotated password",
+    "status": "PASS",
+    "detail": "HTTP 200 with the password set before the restart"
+  },
+  {
+    "id": "IT20",
+    "name": "Client API key survives a restart",
+    "status": "PASS",
+    "detail": "key still listed and /v1/models returns HTTP 200 with the same secret"
+  },
+  {
+    "id": "IT21",
+    "name": "Credential and key material stay encrypted after restart",
+    "status": "PASS",
+    "detail": "account present, SSO marker and API key secret absent from backend.db (552960 bytes)"
+  },
+  {
+    "id": "IT22",
+    "name": "Readiness state after an account exists (informational)",
+    "status": "PASS",
+    "detail": "/healthz HTTP 200, /readyz HTTP 200 state=degraded (fresh install was HTTP 503)"
+  },
+  {
+    "id": "IT23a",
+    "name": "bootstrap: option password login + applied file + key ensure",
+    "status": "PASS",
+    "detail": "exit 0, applied file written, 1 key named 'IT Bootstrap Key'"
+  },
+  {
+    "id": "IT23b",
+    "name": "bootstrap: idempotent re-run creates no duplicate",
+    "status": "PASS",
+    "detail": "two runs, exactly 1 key named 'IT Bootstrap Key' (manual duplicate creation returns HTTP 201)"
+  },
+  {
+    "id": "IT23c",
+    "name": "bootstrap: rotates the DB password to the option value",
+    "status": "PASS",
+    "detail": "PUT /me/password succeeded, old password 401, applied file updated"
+  },
+  {
+    "id": "IT23d",
+    "name": "bootstrap: unknown password is not overwritten",
+    "status": "PASS",
+    "detail": "exit 0, warning logged, stored password unchanged (no lockout, no silent reset)"
+  },
+  {
+    "id": "IT23e",
+    "name": "bootstrap: bootstrap_client_key=false creates no key",
+    "status": "PASS",
+    "detail": "exit 0, key count 0, option respected"
+  },
+  {
+    "id": "IT29a",
+    "name": "entrypoint: renders config, persists secrets, honours options",
+    "status": "PASS",
+    "detail": "secrets.env + config.yaml created, admin login 200, no secret in log, exit 0xc000013a (Windows CTRL_BREAK cannot emulate SIGTERM)"
+  },
+  {
+    "id": "IT29b",
+    "name": "entrypoint: secrets and database are stable across restarts",
+    "status": "PASS",
+    "detail": "same JWT/encryption key, admin row reused, exit 0xc000013a"
+  },
+  {
+    "id": "IT29c",
+    "name": "entrypoint: rejects a short admin_password and stops",
+    "status": "PASS",
+    "detail": "exit 1, clear message, existing secrets untouched"
+  },
+  {
+    "id": "IT29d",
+    "name": "entrypoint: rendered config keeps enforce mode and secrets",
+    "status": "PASS",
+    "detail": "ledgerMode=enforce, listen 0.0.0.0:8000 in config, no password in logs"
+  }
+]

@@ -1,0 +1,3 @@
+build_from:
+  amd64: "ghcr.io/chenyme/grok2api:v3.1.8-amd64"
+  aarch64: "ghcr.io/chenyme/grok2api:v3.1.8-arm64"

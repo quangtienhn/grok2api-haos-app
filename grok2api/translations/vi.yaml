@@ -1,0 +1,29 @@
+configuration:
+  admin_username:
+    name: "Tên đăng nhập quản trị"
+    description: "Tên tài khoản quản trị cho Web UI và admin API (được tạo ở lần khởi động đầu tiên)."
+  admin_password:
+    name: "Mật khẩu quản trị"
+    description: >-
+      Bắt buộc, tối thiểu 8 ký tự. Giá trị này là nguồn chuẩn: mỗi lần khởi động,
+      add-on bảo đảm mật khẩu đã lưu trong cơ sở dữ liệu trùng với giá trị này.
+      Add-on không tự sinh mật khẩu, vì mật khẩu tự sinh sẽ phải ghi ra log.
+  bootstrap_client_key:
+    name: "Tạo client API key"
+    description: >-
+      Tự động tạo một client API key tương thích OpenAI với tên bên dưới nếu chưa
+      tồn tại. Secret không bao giờ được ghi log; hãy mở Web UI
+      (API keys -> reveal) để lấy và dán vào client.
+  client_key_name:
+    name: "Tên client API key"
+    description: "Tên dùng để tìm hoặc tạo client API key khi khởi động."
+  request_timeout:
+    name: "Thời gian chờ request (giây)"
+    description: "Thời gian tối đa của một request API, kể cả response streaming (30-7200 giây)."
+  public_base_url:
+    name: "Base URL công khai"
+    description: >-
+      Tùy chọn. Đặt khi Web UI được truy cập qua reverse proxy, ví dụ
+      https://grok.example.com. Để trống để dùng origin hiện tại.
+network:
+  8000/tcp: "API tương thích OpenAI (/v1), admin API (/api/admin/v1) và Web UI."
