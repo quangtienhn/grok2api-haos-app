@@ -1,0 +1,22 @@
+name: "FlareSolverr"
+version: "3.3.25"
+slug: "flaresolverr"
+description: "Cloudflare bypass proxy (FlareSolverr) for Grok Web sessions - internal Home Assistant OS add-on"
+url: "https://github.com/Flaresolverr/Flaresolverr"
+maintainer: "FlareSolverr team"
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+init: true
+ports:
+  8191/tcp: 8191
+ports_description:
+  8191/tcp: "FlareSolverr local challenge proxy (LAN only, internal use)"
+options:
+  log_level: "info"
+  captcha_solver: "none"
+schema:
+  log_level: str
+  captcha_solver: str

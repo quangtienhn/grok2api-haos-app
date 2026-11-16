@@ -1,0 +1,30 @@
+configuration:
+  admin_username:
+    name: "Admin username"
+    description: "Administrator account name for the Web UI and the admin API (created on first start)."
+  admin_password:
+    name: "Admin password"
+    description: >-
+      Mandatory, at least 8 characters. This value is authoritative: on every
+      start the add-on makes sure the stored admin password equals this value.
+      No password is generated automatically, because a generated password would
+      have to be written to the log.
+  bootstrap_client_key:
+    name: "Create client API key"
+    description: >-
+      Create one OpenAI-compatible client API key with the name below if it does
+      not exist yet. The secret is never logged; reveal it in the Web UI
+      (API keys -> reveal) and paste it into your client.
+  client_key_name:
+    name: "Client API key name"
+    description: "Name used when looking up or creating the bootstrapped client API key."
+  request_timeout:
+    name: "Request timeout (seconds)"
+    description: "Maximum duration of an API request, including streaming responses (30-7200 seconds)."
+  public_base_url:
+    name: "Public base URL"
+    description: >-
+      Optional. Set this when the Web UI is reached through a reverse proxy, for
+      example https://grok.example.com. Leave empty to use the current origin.
+network:
+  8000/tcp: "OpenAI-compatible API (/v1), admin API (/api/admin/v1) and Web UI."

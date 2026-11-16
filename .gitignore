@@ -1,0 +1,48 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+.build/
+.tools/
+dist/
+build/
+
+# Secrets and runtime data
+.env
+.env.*
+!.env.example
+*.env
+secrets.env
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Browser profiles / cookies
+*cookies*.json
+*cookies*.txt
+cookiejar*
+browser-profile/
+profiles/
+
+# Logs and runtime artifacts
+*.log
+*.tmp
+*.bak
+tests/integration/last-run.json
+tests/integration/resources.json
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
